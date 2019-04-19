@@ -70,12 +70,12 @@ Now you're ready to build your VM.
 
 8. Now we need to set a statip external IP address in order to access a notebook from our home browser. Before doing anything, note somewere the name and the region+ of your VM (instance-1 and us-west1 for me, remember ?).
 
-  -  Click on the upper left menu, go to VPC Network > External IP addresses. Click on Reserve a static address. 
+    -  Click on the upper left menu, go to VPC Network > External IP addresses. Click on Reserve a static address. 
 
-  -  Then chose a name: you can choose whatever you want. You can attach several static IPs to one VM instance, so that a given IP is allowed to a specific service. In our case for instance, this IP will de dedicated to Jupyter. All I'm saying is that a good name should refer to a service and not to a VM instance.
+    -  Then chose a name: you can choose whatever you want. You can attach several static IPs to one VM instance, so that a given     IP is allowed to a specific service. In our case for instance, this IP will de dedicated to Jupyter. All I'm saying is that a good name should refer to a service and not to a VM instance.
 
-  -  Select the appropriate region and attach it to the instance you just created. 
-  -  Click on reserve and that's it for the external IP. 
+    -  Select the appropriate region and attach it to the instance you just created. 
+    -  Click on reserve and that's it for the external IP. 
 
 9. Last step for this part ! We need to  set a firewall rules to authorise the traffic for Jupyter on our VM. 
 Still in VPC Network, click on Firewall Rules > Create Firewall Rule. Complete the form as follows: 
