@@ -109,14 +109,14 @@ Now let's use it ;)
   ```
   wget http://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
   ```
-Obviously you need to change the Anaconda version with the one you just checked. 
+    Obviously you need to change the Anaconda version with the one you just checked. 
 
 3. Launch install by typing 
   ```
   bash Anacond3-2019.03-Linux-x86_64.sh
   ```
-Again change the Anaconda filename as needed. 
-Follow the steps (press space to pass the License). Accept to initialize Anaconda3 by running conda init at the end of the installation process. 
+   Again change the Anaconda filename as needed. 
+   Follow the steps (press space to pass the License). Accept to initialize Anaconda3 by running conda init at the end of the  installation process. 
 
 4. In order to use Anaconda right now let's refresh the bash:
 ```
