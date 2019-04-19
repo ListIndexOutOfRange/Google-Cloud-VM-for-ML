@@ -113,41 +113,37 @@ Now let's use it ;)
     Obviously you need to change the Anaconda version with the one you just checked. 
 
 3. Launch install by typing 
-  ```
-  bash Anacond3-2019.03-Linux-x86_64.sh
-  ```
-   Again change the Anaconda filename as needed. 
-   + Follow the steps (press space to pass the License). Accept to initialize Anaconda3 by running conda init at the end of the  installation process.
-   > test
- > test
- >> test
+    ```
+    bash Anacond3-2019.03-Linux-x86_64.sh
+    ```
+    Again change the Anaconda filename as needed. 
+    Follow the steps (press space to pass the License). Accept to initialize Anaconda3 by running conda init at the end of the installation process.
 
 4. In order to use Anaconda right now let's refresh the bash:
-```
-source ~/.bashrc
-```
+    ```
+    source ~/.bashrc
+    ```
 
-5. If everything went fine, you are now in an environment called (base). You can now install any Python library you want. 
-For instance let's do: 
-```
-pip install tensorflow
-pip install keras
-```
+5. If everything went fine, you are now in an environment called (base). You can now install any Python library you want. For instance let's do: 
+    ```
+    pip install tensorflow
+    pip install keras
+    ```
 
 6. Now that everything is ready "Python-side", all we need to do is setting up Jupyter. Type
-```
-jupyter notebook --generate-config
-```
+    ```
+    jupyter notebook --generate-config
+    ```
 
 7. Then we'll modify the config file we juste created. I use Vim for this tutorial. I know it can be a bit confusing but just remember those few things: 
     -  to actually write something in the file, you need yo be in insert mode, which you can do by pressing the "i" key. 
     -  to save and quit a file you need to quit the insert mode first by pressing the "Echap" key. 
     -  when you're not in insert mode, you can save & quit by typing ":wq".
-So let's go. Type: 
-```
-vim ~/.jupyter/jupyter_notebook_config.py
-```
-Then, carefully: 
+    So let's go. Type: 
+    ```
+    vim ~/.jupyter/jupyter_notebook_config.py
+    ```
+    Then, carefully: 
     -  press "i"
     -  in the notebookApp Configuration section, type: 
     ```
@@ -160,20 +156,18 @@ Then, carefully:
     -  press "Echap"
     -  type ":wqw
     
-We're almost done ! Everything is ready. All we have to do is launch jupyter one type to setup a password. (We could have done it in the jupyter config file but this way in more user-friendly imo.)  
-So type 
-``` 
-jupyter notebook --no-browser --port=5000
-```
-You'll see that a authentification token is given to you. Copy it. 
-Then in your browser go to 
-```
-http://<external_IP_address>:<port>
-```
-Where of course <external_IP_address> is the IP we defined before, attached to our VM instance, and the port is the one of the Firewall rule. 
-
-You should arrive to a Jupyter Notebook login page.   
-From there you can paste the token and use it to define a permanent password.  
+8. We're almost done ! Everything is ready. All we have to do is launch jupyter one type to setup a password (We could have done it in the jupyter config file but this way in more user-friendly imo). So type: 
+    ``` 
+    jupyter notebook --no-browser --port=5000
+    ```
+    You'll see that a authentification token is given to you. Copy it. 
+    Then in your browser go to 
+    ```
+    http://<external_IP_address>:<port>
+    ```
+    Where of course <external_IP_address> is the IP we defined before, attached to our VM instance, and the port is the one of the Firewall rule. 
+    You should arrive to a Jupyter Notebook login page.   
+    From there you can paste the token and use it to define a permanent password.  
 
 That's it you've done it ! 
 
