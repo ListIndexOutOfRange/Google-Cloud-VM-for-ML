@@ -68,10 +68,14 @@ Now you're ready to build your VM.
 
 7. You can now click on create and wait for the setup to complete. 
 
-8. Now we need to set a statip external IP address in order to access a notebook from our home browser. Before doing anything, note somewere the name and the region+ of your VM (instance-1 and us-west1 for me, remember ?).  
-Click on the upper left menu, go to VPC Network > External IP addresses. Click on Reserve a static address. 
-Then chose a name: you can choose whatever you want. You can attach several static IPs to one VM instance, so that a given IP is allowed to a specific service. In our case for instance, this IP will de dedicated to Jupyter. All I'm saying is that a good name should refer to a service and not to a VM instance. Select the appropriate region and attach it to the instance you just created. 
-Click on reserve and that's it for the external IP. 
+8. Now we need to set a statip external IP address in order to access a notebook from our home browser. Before doing anything, note somewere the name and the region+ of your VM (instance-1 and us-west1 for me, remember ?).
+
+  -  Click on the upper left menu, go to VPC Network > External IP addresses. Click on Reserve a static address. 
+
+  -  Then chose a name: you can choose whatever you want. You can attach several static IPs to one VM instance, so that a given IP is allowed to a specific service. In our case for instance, this IP will de dedicated to Jupyter. All I'm saying is that a good name should refer to a service and not to a VM instance.
+
+  -  Select the appropriate region and attach it to the instance you just created. 
+  -  Click on reserve and that's it for the external IP. 
 
 9. Last step for this part ! We need to  set a firewall rules to authorise the traffic for Jupyter on our VM. 
 Still in VPC Network, click on Firewall Rules > Create Firewall Rule. Complete the form as follows: 
@@ -201,13 +205,67 @@ And remember the output ! Let's call it <release>. (If you have followed my inst
   
 6. Take your time. Any mispelled word will lead to an error so just relax, take a coffe and your time. Type 
 ```
-echo "deb http://packages.cloud.google.com/apt gcsfuse-<release> main"
+echo "deb http://packages.cloud.google.com/apt gcsfuse-<release> main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
 ```
 Of course you have to replace <release> by what you got previousky. For instance: 
 ```
-echo "deb http://packages.cloud.google.com/apt gcsfuse-bionic main"
+echo "deb http://packages.cloud.google.com/apt gcsfuse-bionic main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
 ```
   
+7. Then: 
+```
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+```
+
+8. Finally:
+```
+sudo apt-get update
+sudo apt-get install gcsfuse
+```
+
+I hope at this point you have installed gcsfuse without any trouble. We're almost done ;) 
+
+9. We'll create a folder to get the bucket: 
+```
+sudo mkdir /mnt/gcs-buclet
+```
+
+_Note: it is possible that the sudo get rejected because we didn't actually setted up a sudo user. You can do it by typing "sudo passwd" and chose a password._
+
+10. Finally we can mount the bucket: 
+```
+sudo gcsfuse <bucket-name> /mnt/gcs-bucket
+```
+
+Okaaaaay ! That's it. You now have a superpowerfull VM in the cloud able to access any dataset you want and use it through a Jupyter Notebook. 
+
+One last point: you may want to store data in your bucket(s). If you try a this point you'll get an error saying "permission denied". Let's fix that. 
+
+
+## 4. Writing a database from the VM
+
+
+1. On the Google Cloud Platform, go to main menu > IAM & Admin > Service Accounts. 
+
+2. Click on the three vertical dots > create key, and create a key in JSON format. 
+
+3. Import the key in your VM. You can do it by putting it on a bucket and mounting it or simply on the VM SSH window you can click on the upper right menu > import file. 
+
+4. Type (carefully as always :p ):
+```
+gcsfuse -o allow_other --gid 0 --uid 0 --file-mode 777 --dir-mode 777 --key-file /path/to/json/key/file <bucket-name> /path/of/mounted/bucket
+```
+
+
+That's it ! I hope this tutorial was clear enough and helped you as you wanted to. 
+If you have any questions or comments feel free to contact me. 
+
+
+
+
+  
+
+
   
   
   
