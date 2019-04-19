@@ -104,8 +104,8 @@ Now let's use it ;)
     -  the OS: nothing to explain right ? 
     -  the CPU type: powerPC or x_86 (32 bits) or x_86_64 (64 bits)
     -  the Anaconda version: do you prefer Python 2 or 3 ? Well actually even if you somehow prefer Python 2, consider trying Python 3 buddy. 
-For instance, for me, what i want it named "Anaconda3-2019.03-Linux-x86_64.sh".  
-So in your vm type:  
+    For instance, for me, what i want it named "Anaconda3-2019.03-Linux-x86_64.sh".  
+    So in your vm type:  
   ```
   wget http://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
   ```
