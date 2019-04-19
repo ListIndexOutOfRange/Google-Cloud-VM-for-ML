@@ -101,15 +101,15 @@ Now let's use it ;)
 1. Let's start the VM. Click on the main menu > Compute Engine API > VM instances. At this point, note somewhere the external IP address. Click on the three vertical dots on the right, then start. Once it's started, click on SSH. 
 
 2.  In your browser, go to https://repo.continuum.io/archive/. Look for the latest Anaconda that fits your need. You need to check 3 things:
-    -  the OS: nothing to explain right ? 
-    -  the CPU type: powerPC or x_86 (32 bits) or x_86_64 (64 bits)
-    -  the Anaconda version: do you prefer Python 2 or 3 ? Well actually even if you somehow prefer Python 2, consider trying Python 3 buddy. 
-    For instance, for me, what i want it named "Anaconda3-2019.03-Linux-x86_64.sh".  
-    So in your vm type:  
+
+   -  the OS: nothing to explain right ? 
+   -  the CPU type: powerPC or x_86 (32 bits) or x_86_64 (64 bits)
+   -  the Anaconda version: do you prefer Python 2 or 3 ? Well actually even if you somehow prefer Python 2, consider trying Python 3 buddy. 
+   For instance, for me, what i want it named "Anaconda3-2019.03-Linux-x86_64.sh".  
+   So in your vm type:  
   ```
   wget http://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
   ```
-    
    Obviously you need to change the Anaconda version with the one you just checked. 
 
 3. Launch install by typing 
