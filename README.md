@@ -154,7 +154,7 @@ Now let's use it ;)
     ```
     _The port value should be equal to the one you chose while creating the Firewall rule_
     -  press "Echap"
-    -  type ":wqw
+    -  type ":wq"
     
 8. We're almost done ! Everything is ready. All we have to do is launch jupyter one type to setup a password (We could have done it in the jupyter config file but this way in more user-friendly imo). So type: 
     ``` 
@@ -187,53 +187,57 @@ Let's see how to do that.
 Let's say you have a huge dataset on your computer. The idea here is to import it in a disk stored on the cloud (a "bucket" that is in Google Cloud), and then mount this disk in your VM. That will allow you to read this disk, though you won't be able to write on it because of security settings. We'll get on that later. For now, follow me: 
 
 1. Click on the main menu button > Storage > Create Bucket. Just name it as you want and let the form as it is. 
-Remeber the name of your bucket, we'll need it to mount it on our VM. 
+Remember the name of your bucket, we'll need it to mount it on our VM. 
+
 2. Then you can upload anything you want on your bucket. 
+
 3. Now let's mount the bucket on our VM. But first we'll need our Project ID. Go to the main menu > Home > Project Info. Note the project ID.  
+
 4. Get back to your VM instance. Type 
-``` 
-gcloud init
-```
-Follow carefullyt the installation process. Be particulary focused when choosing the region. You need to set it accordingly to your VM zone (for me it's us-west1-b for instance). 
+    ``` 
+    gcloud init
+    ```
+    Follow carefully the installation process. Be particulary focused when choosing the region. You need to set it accordingly to your VM zone (for me it's us-west1-b for instance). 
+    
 5. Then type 
-``` 
-lsb_release -c -s
-```
-And remember the output ! Let's call it <release>. (If you have followed my instruction strictly your VM is under Ubuntu 18.04 LTS so the output should be "bionic". 
+    ``` 
+    lsb_release -c -s
+    ```
+    And remember the output ! Let's call it <release>. (If you have followed my instruction strictly your VM is under Ubuntu 18.04 LTS so the output should be "bionic". 
   
 6. Take your time. Any mispelled word will lead to an error so just relax, take a coffe and your time. Type 
-```
-echo "deb http://packages.cloud.google.com/apt gcsfuse-<release> main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
-```
-Of course you have to replace <release> by what you got previousky. For instance: 
-```
-echo "deb http://packages.cloud.google.com/apt gcsfuse-bionic main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
-```
+    ```
+    echo "deb http://packages.cloud.google.com/apt gcsfuse-<release> main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
+    ```
+    Of course you have to replace <release> by what you got previousky. For instance: 
+    ```
+    echo "deb http://packages.cloud.google.com/apt gcsfuse-bionic main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
+    ```
   
 7. Then: 
-```
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-```
+    ```
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    ```
 
 8. Finally:
-```
-sudo apt-get update
-sudo apt-get install gcsfuse
-```
+    ```
+    sudo apt-get update
+    sudo apt-get install gcsfuse
+    ```
 
-I hope at this point you have installed gcsfuse without any trouble. We're almost done ;) 
+    I hope at this point you have installed gcsfuse without any trouble. We're almost done ;) 
 
 9. We'll create a folder to get the bucket: 
-```
-sudo mkdir /mnt/gcs-buclet
-```
-
-_Note: it is possible that the sudo get rejected because we didn't actually setted up a sudo user. You can do it by typing "sudo passwd" and chose a password._
+    ```
+    sudo mkdir /mnt/gcs-buclet
+    ```
+    _Note: it is possible that the sudo get rejected because we didn't actually setted up a sudo user. You can do it by typing "sudo passwd" and chose a password._
 
 10. Finally we can mount the bucket: 
-```
-sudo gcsfuse <bucket-name> /mnt/gcs-bucket
-```
+    ```
+    sudo gcsfuse <bucket-name> /mnt/gcs-bucket
+    ```
+
 
 Okaaaaay ! That's it. You now have a superpowerfull VM in the cloud able to access any dataset you want and use it through a Jupyter Notebook. 
 
@@ -250,70 +254,10 @@ One last point: you may want to store data in your bucket(s). If you try a this 
 3. Import the key in your VM. You can do it by putting it on a bucket and mounting it or simply on the VM SSH window you can click on the upper right menu > import file. 
 
 4. Type (carefully as always :p ):
-```
-gcsfuse -o allow_other --gid 0 --uid 0 --file-mode 777 --dir-mode 777 --key-file /path/to/json/key/file <bucket-name> /path/of/mounted/bucket
-```
+    ```
+    gcsfuse -o allow_other --gid 0 --uid 0 --file-mode 777 --dir-mode 777 --key-file /path/to/json/key/file <bucket-name> /path/of/mounted/bucket
+    ```
 
 
 That's it ! I hope this tutorial was clear enough and helped you as you wanted to. 
 If you have any questions or comments feel free to contact me. 
-
-
-
-
-  
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-  
-
