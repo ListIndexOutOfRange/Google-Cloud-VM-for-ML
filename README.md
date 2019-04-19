@@ -116,9 +116,11 @@ Now let's use it ;)
   ```
   bash Anacond3-2019.03-Linux-x86_64.sh
   ```
-   
    Again change the Anaconda filename as needed. 
-   Follow the steps (press space to pass the License). Accept to initialize Anaconda3 by running conda init at the end of the  installation process. 
+   + Follow the steps (press space to pass the License). Accept to initialize Anaconda3 by running conda init at the end of the  installation process.
+   > test
+ > test
+ >> test
 
 4. In order to use Anaconda right now let's refresh the bash:
 ```
