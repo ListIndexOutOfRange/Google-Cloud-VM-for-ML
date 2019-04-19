@@ -1,4 +1,4 @@
-# Google-Cloud-VM-for-ML
+# Google-Cloud-Virtual-Machine-for-Machine-Learning
 A comprehensive guide on how to set up from scratch a Google Cloud VM able to runs a Jupyter Notebook with Keras on TensorFlow, and with a large dataset available. 
 
 As Google Cloud can be a bit hard to begin with, i hope this guide will help you to get where you want quickly and painlessly. 
