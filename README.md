@@ -106,15 +106,15 @@ Now let's use it ;)
     -  the Anaconda version: do you prefer Python 2 or 3 ? Well actually even if you somehow prefer Python 2, consider trying Python 3 buddy. 
 For instance, for me, what i want it named "Anaconda3-2019.03-Linux-x86_64.sh".  
 So in your vm type:  
-```
-wget http://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
-```
+  ```
+  wget http://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
+  ```
 Obviously you need to change the Anaconda version with the one you just checked. 
 
 3. Launch install by typing 
-```
-bash Anacond3-2019.03-Linux-x86_64.sh
-```
+  ```
+  bash Anacond3-2019.03-Linux-x86_64.sh
+  ```
 Again change the Anaconda filename as needed. 
 Follow the steps (press space to pass the License). Accept to initialize Anaconda3 by running conda init at the end of the installation process. 
 
